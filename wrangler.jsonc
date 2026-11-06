@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "serenive-site",
+  "compatibility_date": "2026-10-01",
+  // Static site served from ./public. A Worker script (src/worker.js) can be added later
+  // for the contact and newsletter forms; see README.
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

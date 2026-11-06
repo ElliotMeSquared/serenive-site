@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serenive.com.au/sitemap.xml
