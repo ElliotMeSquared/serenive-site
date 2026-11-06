@@ -290,8 +290,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
   padding-block: calc(140px + env(safe-area-inset-top, 0px)) 120px;
 }
 .hero__backdrop { position: absolute; inset: -3%; z-index: -2; width: 106%; height: 106%; max-width: none; object-fit: cover; animation: hero-drift 40s var(--ease) infinite alternate; will-change: transform; }
-.hero__art { position: absolute; top: calc(96px + env(safe-area-inset-top, 0px)); bottom: 0; right: 0; width: min(36vw, 560px); z-index: -1; pointer-events: none; }
-@media (max-width: 760px) { .hero__art { width: 46vw; opacity: .55; } }
+/* The line art only gets the space beside the headline: half the viewport, less half the
+   headline's widest line (about 4.9em of the display size), less a gutter. It never overlaps text. */
+.hero__art {
+  position: absolute; top: calc(96px + env(safe-area-inset-top, 0px)); bottom: 32px; right: 0; z-index: -1; pointer-events: none;
+  width: max(0px, calc(50vw - 4.9 * clamp(40px, 6.4vw, 84px) - 48px)); max-width: 560px;
+}
+@media (max-width: 760px) { .hero__art { display: none; } }
 .hero__art svg { width: 100%; height: 100%; }
 .hero-art__lines path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 4.2s var(--ease) .3s forwards; }
 .hero-art__lines path:nth-child(3n) { animation-delay: .7s; }
