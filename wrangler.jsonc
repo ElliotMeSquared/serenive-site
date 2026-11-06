@@ -9,5 +9,8 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Branch previews (Workers Builds runs `wrangler preview` on non-main branches).
+  // Assets and compatibility settings above apply to previews too.
+  "previews": {}
 }
