@@ -58,6 +58,19 @@ One-time setup in the Cloudflare dashboard:
 4. Add a Redirect Rule (Rules → Redirect Rules → template "Redirect from WWW to root") so `www`
    goes to `https://serenive.com.au`.
 
+## Performance
+
+- **Fonts** are self-hosted in `public/fonts/`: Playfair Display and Montserrat, latin subset, variable
+  weights, under the SIL Open Font License. The two upright faces are preloaded. Nothing loads from
+  Google Fonts.
+- **Textures** are pre-rendered WebP images (`assets/textures/*.webp`), not live SVG filters. Blur and
+  grain filters redraw on every scroll frame and caused visible jank. Keep new decorative art as
+  images or plain-stroke SVG.
+- **Hero:** the backdrop is a single image that drifts on the GPU, and the gold line art is a plain SVG
+  drawn once on load. The headline never fades from invisible, so it counts as painted straight away.
+- **Smooth scrolling** uses Lenis (`js/vendor/lenis-1.3.27.min.js`, MIT) for mouse and trackpad. Touch
+  keeps native scrolling, and it switches off for visitors who prefer reduced motion.
+
 ## Draft mode
 
 `<html data-draft>` on every page shows two kinds of note for review:

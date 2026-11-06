@@ -4,16 +4,30 @@
   var header = document.querySelector('.site-header');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Header: transparent over the opening forest band, ivory once the page scrolls past it. */
-  var opener = document.querySelector('.hero, .page-hero');
-  function updateHeader() {
-    if (!header) return;
-    var limit = opener ? opener.offsetHeight - header.offsetHeight - 20 : 0;
-    header.classList.toggle('is-solid', window.scrollY > Math.max(limit, 40) || !opener);
+  /* Smooth scrolling for mouse and trackpad. Touch keeps native scrolling; off for reduced motion. */
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new window.Lenis({ lerp: 0.09, wheelMultiplier: 0.9, anchors: { offset: -80 }, autoRaf: true });
   }
-  updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('resize', updateHeader);
+
+  /* Header: transparent over the opening forest band, ivory once the page scrolls past it.
+     The threshold is measured on load and resize only, so scrolling never forces a layout. */
+  var opener = document.querySelector('.hero, .page-hero');
+  var limit = 40, solid = null, queued = false;
+  function measure() {
+    limit = opener && header ? Math.max(opener.offsetHeight - header.offsetHeight - 20, 40) : 0;
+  }
+  function updateHeader() {
+    queued = false;
+    if (!header) return;
+    var next = !opener || window.scrollY > limit;
+    if (next !== solid) { solid = next; header.classList.toggle('is-solid', next); }
+  }
+  measure(); updateHeader();
+  window.addEventListener('scroll', function () {
+    if (!queued) { queued = true; requestAnimationFrame(updateHeader); }
+  }, { passive: true });
+  window.addEventListener('resize', function () { measure(); updateHeader(); });
 
   /* Mobile menu */
   var toggle = document.querySelector('.menu-toggle');
@@ -26,6 +40,7 @@
       toggle.querySelector('.menu-toggle__label').textContent = open ? 'Close' : 'Menu';
     }
     if (sheet) sheet.inert = !open;
+    if (lenis) { if (open) lenis.stop(); else lenis.start(); }
   }
   if (toggle && sheet) {
     sheet.inert = true;
