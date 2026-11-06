@@ -21,5 +21,7 @@ real space, team and treatments before or soon after launch.
 | foliage | photo-1470058869958-2a77ade41c02 |
 | oil-dropper | photo-1515377905703-c4788e51af15 |
 | diffuser-towel | photo-1620733723572-11c53f73a416 |
+| hands-soft | photo-1610992015732-2449b76344bc |
+| sauna | photo-1583416750470-965b2707b355 |
 
 Each photo's source is `https://images.unsplash.com/<photo id>`.
