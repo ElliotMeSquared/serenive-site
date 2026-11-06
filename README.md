@@ -18,6 +18,7 @@ package.json     pins Wrangler, the Cloudflare CLI
 | `/` | `index.html` | Home: hero, why we exist, treatments, the space, packages and vouchers, Instagram, newsletter |
 | `/philosophy` | `philosophy.html` | Why We Exist (client copy, verbatim) |
 | `/treatments` | `treatments.html` | The five treatment categories, each with a Book button |
+| `/treatments/massage` and the other four | `treatments/*.html` | One page per treatment, each with its own share image |
 | `/packages` | `packages.html` | Wellness packages and gift vouchers |
 | `/visit` | `visit.html` | Address, hours, contact form |
 | `/book` | `book.html` | Booking, framed in the site's header and footer, ready for the Square embed |
@@ -109,11 +110,22 @@ committing them.
 - Social handles.
 - Professional photography and video of the rooms, treatments and team.
 
-## Brand rules followed
+## Brand rules (from the design pack)
 
-- **Type:** Playfair Display for headings, Montserrat for text and UI.
-- **Grounds:** ivory and forest alternate. Sage is used once per page.
-- **Gold:** kept to the monogram, rules, line art and the Book button.
-- **Corners:** square on images and panels, 4px on buttons and fields.
-- **Shadows:** none, apart from the gift voucher mock-up.
-- **Motion:** slow fade-and-rise, switched off for visitors who prefer reduced motion.
+Keep to these when editing:
+
+- **Colour:** forest, sage, ivory and gold, plus the pack's derived text tokens (`ink-muted`, `accent`).
+  No other hues, and no gradients apart from the sage-marble texture.
+- **Shadows:** none. Separate things with space, hairlines or a gold rule.
+- **Gold:** the monogram, rules, line art and the header Book button only. No other gold buttons or
+  blocks.
+- **Buttons:** the header Book button is gold. Book buttons on ivory are forest. Every other button is
+  an outline.
+- **Type:** Playfair Display for headings, Montserrat for text and UI. Headings in sentence case
+  ("Body treatments"); uppercase only for eyebrows and buttons.
+- **Alignment:** body text left-aligned. Centring only for the hero and signage moments.
+- **Corners:** square on images, panels and cards; 4px on buttons and fields.
+- **Grounds:** ivory and forest alternate. Sage once per page at most.
+- **Motion:** fade and rise at 600–900ms, switched off for visitors who prefer reduced motion.
+- **Share images:** `assets/og/serenive-share.png` by default, plus one per treatment
+  (`serenive-<treatment>.png`), 1200×630.

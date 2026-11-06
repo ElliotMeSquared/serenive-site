@@ -50,7 +50,7 @@
 </div>
 <section class="page-hero">
   <div class="wrap">
-    <div class="stack" style="max-width:760px">
+    <div class="stack page-hero__text">
       <p class="eyebrow">Book</p>
       <h1 class="h1">Book a treatment</h1>
       <p class="lede">Choose your treatment and a time that suits you. It only takes a minute.</p>
@@ -68,7 +68,7 @@
         <ol class="booking__steps" aria-label="Booking steps">
           <li aria-current="step">Treatment</li><li>Time</li><li>Your details</li><li>Confirm</li>
         </ol>
-        <h2 class="h2" style="margin-top:16px">Choose your treatment</h2>
+        <h2 class="h2">Choose your treatment</h2>
       </div>
       <ul class="booking__list"><li><button class="booking__option" type="button" aria-pressed="false" data-id="massage" data-name="Massage">
         <span><span class="h3">Massage</span><span class="body-sm">Unhurried, full-body work that eases tension and quietens a busy mind.</span></span>
@@ -76,36 +76,40 @@
       </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="facials" data-name="Facials">
         <span><span class="h3">Facials</span><span class="body-sm">Thoughtful facial treatments that leave skin calm, nourished and glowing.</span></span>
         <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="body" data-name="Body Treatments">
-        <span><span class="h3">Body Treatments</span><span class="body-sm">Scrubs, wraps and rituals that renew the skin and restore the whole body.</span></span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="body-treatments" data-name="Body treatments">
+        <span><span class="h3">Body treatments</span><span class="body-sm">Scrubs, wraps and rituals that renew the skin and restore the whole body.</span></span>
         <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="skin" data-name="Skin Therapy">
-        <span><span class="h3">Skin Therapy</span><span class="body-sm">Targeted care for the skin you’re in, planned around what it needs.</span></span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="skin-therapy" data-name="Skin therapy">
+        <span><span class="h3">Skin therapy</span><span class="body-sm">Targeted care for the skin you’re in, planned around what it needs.</span></span>
         <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="packages" data-name="Wellness Packages">
-        <span><span class="h3">Wellness Packages</span><span class="body-sm">Longer rituals that bring treatments together, for real time out.</span></span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="wellness-packages" data-name="Wellness packages">
+        <span><span class="h3">Wellness packages</span><span class="body-sm">Longer rituals that bring treatments together, for real time out.</span></span>
         <span class="body-sm muted"><span class="tbc">Price to come</span></span>
       </button></li></ul>
       <div class="booking__foot">
-        <p class="body-sm muted" style="margin:0">Selected: <strong id="booking-chosen" style="color:var(--ink);font-weight:500">Nothing yet</strong></p>
+        <p class="body-sm muted">Selected: <strong id="booking-chosen">Nothing yet</strong></p>
         <a class="btn btn--forest" id="booking-continue" href="#" data-square-url="" aria-disabled="true">Choose a time</a>
       </div>
     </div>
-    <p class="body-sm muted" id="booking-note" role="status" style="margin:0;text-align:center">Secure booking and payment by Square. <span class="tbc tbc--q">Live times load here once Square is set up</span></p>
+    <p class="body-sm muted" id="booking-note" role="status">Secure booking and payment by Square. <span class="tbc tbc--q">Live times load here once Square is set up</span></p>
   </div>
 </section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
-      <div>
+      <div class="footer-brand">
         <img src="/assets/logos/serenive-horizontal-reversed.svg" alt="Serenive Beauty &amp; Spa" width="816" height="198" loading="lazy">
         <p class="footer-tag">More Than Beauty. A Feeling of Wellbeing.</p>
       </div>
       <div>
         <h2>Visit</h2>
         <p><span class="tbc tbc--q">Street address</span><br><span class="tbc tbc--q">Suburb, State, Postcode</span></p>
-        <p style="margin-top:12px"><a class="link" href="/visit">Directions &amp; hours</a></p>
+        <p class="footer-gap"><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Serenive+Beauty+%26+Spa" rel="noopener">Get directions</a></p>
+      </div>
+      <div>
+        <h2>Hours</h2>
+        <dl class="footer-hours"><dt>Mon – Fri</dt><dd><span class="tbc">To come</span></dd><dt>Saturday</dt><dd><span class="tbc">To come</span></dd><dt>Sunday</dt><dd><span class="tbc">To come</span></dd></dl>
       </div>
       <div>
         <h2>Explore</h2>
@@ -121,8 +125,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span id="year">2026</span> Serenive Beauty &amp; Spa · <a href="https://serenive.com.au/" style="text-decoration:none">serenive.com.au</a></p>
-      <p>Relax · Restore · Renew</p>
+      <p>&copy; <span id="year">2026</span> Serenive Beauty &amp; Spa</p>
+      <p><a href="https://serenive.com.au/">serenive.com.au</a></p>
     </div>
   </div>
 </footer>
