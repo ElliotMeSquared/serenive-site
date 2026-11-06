@@ -271,7 +271,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .book-bar p { font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 22px; }
 .book-bar .btn { min-height: 44px; padding: 0 20px; }
 
-@media (max-width: 960px) {
+@media (max-width: 1140px) {
   .nav__links, .site-header .nav > .btn { display: none; }
   .menu-toggle { display: inline-flex; }
   .book-bar { display: flex; }
@@ -285,13 +285,16 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
   background: var(--forest); color: var(--on-forest);
-  min-height: clamp(600px, 92svh, 960px);
+  min-height: 100vh; min-height: 100svh;
   display: flex; align-items: center;
   padding-block: calc(140px + env(safe-area-inset-top, 0px)) 120px;
 }
 .hero__backdrop { position: absolute; inset: -3%; z-index: -2; width: 106%; height: 106%; max-width: none; object-fit: cover; animation: hero-drift 40s var(--ease) infinite alternate; will-change: transform; }
 /* The line art only gets the space beside the headline: half the viewport, less half the
    headline's widest line (about 4.9em of the display size), less a gutter. It never overlaps text. */
+/* Flat forest veil over the hero photo keeps ivory text legible (a solid tint, not a gradient). */
+.hero__veil { position: absolute; inset: 0; z-index: -1; background: rgba(38, 61, 48, .62); }
+.hero .eyebrow { color: var(--on-forest); } /* gold lacks contrast over photography */
 .hero__art {
   position: absolute; top: calc(96px + env(safe-area-inset-top, 0px)); bottom: 32px; right: 0; z-index: -1; pointer-events: none;
   width: max(0px, calc(50vw - 4.9 * clamp(40px, 6.4vw, 84px) - 48px)); max-width: 560px;
@@ -343,6 +346,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: var(--radius-none);
 }
 .media > img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+.media--photo { background: var(--hairline); }
+.media--photo > img { position: absolute; inset: 0; }
+img.card__inner { width: 100%; height: 100%; object-fit: cover; }
+.split__media:hover > img, .space .media:hover > img { transform: scale(1.03); }
 .media--forest-leaf { background-image: url("../assets/textures/forest-leaf.svg"); background-color: var(--forest); }
 .media--forest-shadow { background-image: url("../assets/textures/forest-shadow.webp"); background-color: var(--forest); }
 .media--leaf-shadow { background-image: url("../assets/textures/ivory-leaf-shadow.webp"); background-color: var(--ivory); }
@@ -558,7 +565,7 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .footer-bottom a { text-decoration: none; }
 .footer-bottom__right { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
 .powered { letter-spacing: .04em; }
-.powered a { color: var(--on-forest); }
+.powered a { color: var(--on-forest); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .powered a:hover { color: var(--gold); }
 .footer-bottom a:hover { color: var(--on-forest); }
 @media (max-width: 1100px) { .footer-top { grid-template-columns: repeat(4, minmax(0, 1fr)); } .footer-brand { grid-column: 1 / -1; } }

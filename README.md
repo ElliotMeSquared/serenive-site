@@ -90,6 +90,13 @@ One-time setup in the Cloudflare dashboard:
 - [ ] Point the social links at the confirmed handles.
 - [ ] Submit `https://serenive.com.au/sitemap.xml` in Google Search Console.
 
+## Photography
+
+Stand-in stock photography from Unsplash (free commercial licence) is in `public/assets/photos/`,
+graded toward the brand palette, at two sizes per image (`name.webp` and `name-sm.webp`). Sources
+are listed in `public/assets/photos/CREDITS.md`. Replace them with Serenive's own shoot, keeping
+the file names, or update the references in the pages.
+
 ## Swapping in photography
 
 Each image slot is a `<figure class="media media--…">`. Put an `<img>` inside it and it covers the
