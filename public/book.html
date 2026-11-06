@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Book a treatment | Serenive Beauty &amp; Spa</title>
-<meta name="description" content="Book a treatment at Serenive Beauty &amp; Spa. Choose your treatment and a time that suits you.">
+<meta name="description" content="Book a treatment at Serenive Beauty &amp; Spa, Salisbury SA. Choose your treatment and a time that suits you.">
 <link rel="canonical" href="https://serenive.com.au/book">
 <meta property="og:url" content="https://serenive.com.au/book">
 <meta property="og:locale" content="en_AU">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Serenive Beauty &amp; Spa">
 <meta property="og:title" content="Book a treatment | Serenive Beauty &amp; Spa">
-<meta property="og:description" content="Book a treatment at Serenive Beauty &amp; Spa. Choose your treatment and a time that suits you.">
+<meta property="og:description" content="Book a treatment at Serenive Beauty &amp; Spa, Salisbury SA. Choose your treatment and a time that suits you.">
 <meta property="og:image" content="https://serenive.com.au/assets/og/serenive-share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,7 +32,7 @@
       <img class="brand__dark" src="/assets/logos/serenive-horizontal.svg" alt="" width="816" height="198">
     </a>
     <nav class="nav" aria-label="Main">
-      <ul class="nav__links"><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Packages</a></li><li><a href="/packages#vouchers">Gift vouchers</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li></ul>
+      <ul class="nav__links"><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Rituals</a></li><li><a href="/packages#vouchers">Gift cards</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li></ul>
       <a class="btn btn--gold" href="/book">Book</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
         <span class="menu-toggle__label">Menu</span><span class="menu-toggle__icon" aria-hidden="true"></span>
@@ -41,9 +41,10 @@
   </div>
 </header>
 <div class="menu-sheet" id="menu">
-  <ul><li><a href="/">Home</a></li><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Packages</a></li><li><a href="/packages#vouchers">Gift vouchers</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li></ul>
+  <ul><li><a href="/">Home</a></li><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Rituals</a></li><li><a href="/packages#vouchers">Gift cards</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li></ul>
   <div class="stack">
     <a class="btn btn--gold" href="/book">Book a treatment</a>
+    <p class="menu-sheet__phone"><a href="tel:+61881824682">(08) 8182 4682</a></p>
     <p class="eyebrow">Relax · Restore · Renew</p>
   </div>
 </div>
@@ -59,9 +60,10 @@
 <main id="main">
 <section class="section section--ivory">
   <div class="wrap wrap--narrow stack stack--lg">
-    <!-- Square Appointments: replace .booking with Square's embed snippet (Square Dashboard > Appointments >
-         Online booking > Add to website). Keep it inside this section so the site header and footer frame it.
-         In Square, set the button colour to Forest #2F4A3B and upload serenive-monogram as the logo. -->
+    <!-- Online booking: replace .booking with the booking system's embed (the current Courage site uses
+         Acuity Scheduling; Square Appointments also works). Keep it inside this section so the site header
+         and footer frame it. Set the system's button colour to Forest #2F4A3B and use serenive-monogram as the logo.
+         Treatment names in the booking system should match this site's menu exactly. -->
     <div class="booking" data-reveal>
       <div class="booking__head">
         <ol class="booking__steps" aria-label="Booking steps">
@@ -69,28 +71,34 @@
         </ol>
         <h2 class="h2">Choose your treatment</h2>
       </div>
-      <ul class="booking__list"><li><button class="booking__option" type="button" aria-pressed="false" data-id="massage" data-name="Massage">
-        <span><span class="h3">Massage</span><span class="body-sm">Unhurried, full-body work that eases tension and quietens a busy mind.</span></span>
-        <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="facials" data-name="Facials">
-        <span><span class="h3">Facials</span><span class="body-sm">Thoughtful facial treatments that leave skin calm, nourished and glowing.</span></span>
-        <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="body-treatments" data-name="Body treatments">
-        <span><span class="h3">Body treatments</span><span class="body-sm">Scrubs, wraps and rituals that renew the skin and restore the whole body.</span></span>
-        <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="skin-therapy" data-name="Skin therapy">
-        <span><span class="h3">Skin therapy</span><span class="body-sm">Targeted care for the skin you’re in, planned around what it needs.</span></span>
-        <span class="body-sm muted"><span class="tbc">Price to come</span></span>
-      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="wellness-packages" data-name="Wellness packages">
-        <span><span class="h3">Wellness packages</span><span class="body-sm">Longer rituals that bring treatments together, for real time out.</span></span>
-        <span class="body-sm muted"><span class="tbc">Price to come</span></span>
+      <ul class="booking__list"><li><button class="booking__option" type="button" aria-pressed="false" data-id="facials" data-name="Facials">
+        <span><span class="h3">Facials</span><span class="body-sm">Thoughtful facials that leave skin calm, nourished and glowing.</span></span>
+        <span class="body-sm muted">From $59</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="massage" data-name="Massage">
+        <span><span class="h3">Massage</span><span class="body-sm">Unhurried massage that eases tension and quietens a busy mind.</span></span>
+        <span class="body-sm muted">From $59</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="hands-and-feet" data-name="Hands and feet">
+        <span><span class="h3">Hands &amp; feet</span><span class="body-sm">Manicures, pedicures and renewal rituals with soaks, massage and warm paraffin.</span></span>
+        <span class="body-sm muted">From $25</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="body-sauna-and-tan" data-name="Body, sauna and spray tan">
+        <span><span class="h3">Body, sauna &amp; spray tan</span><span class="body-sm">Body rituals that renew the skin, plus infrared sauna and spray tans.</span></span>
+        <span class="body-sm muted">From $30</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="signature-rituals" data-name="Signature spa rituals">
+        <span><span class="h3">Signature spa rituals</span><span class="body-sm">Treatments brought together into one longer ritual, for real time out.</span></span>
+        <span class="body-sm muted">From $119</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="mum-to-be" data-name="Mum-to-be">
+        <span><span class="h3">Mum-to-be</span><span class="body-sm">Gentle massage, facials and rituals for the months before baby arrives.</span></span>
+        <span class="body-sm muted">From $89</span>
+      </button></li><li><button class="booking__option" type="button" aria-pressed="false" data-id="gentlemans-domain" data-name="Gentleman’s domain">
+        <span><span class="h3">Gentleman’s domain</span><span class="body-sm">Deep tissue work, men’s facials and recovery rituals with sauna and hot stones.</span></span>
+        <span class="body-sm muted">From $79</span>
       </button></li></ul>
       <div class="booking__foot">
         <p class="body-sm muted">Selected: <strong id="booking-chosen">Nothing yet</strong></p>
         <a class="btn btn--forest" id="booking-continue" href="#" data-square-url="" aria-disabled="true">Choose a time</a>
       </div>
     </div>
-    <p class="body-sm muted" id="booking-note" role="status">Secure booking and payment by Square. <span class="tbc tbc--q">Live times load here once Square is set up</span></p>
+    <p class="body-sm muted" id="booking-note" role="status">Prefer to talk it through? Call us on <a href="tel:+61881824682">(08) 8182 4682</a>. <span class="tbc tbc--q">Live online booking to be connected</span></p>
   </div>
 </section>
 </main>
@@ -103,16 +111,17 @@
       </div>
       <div>
         <h2>Visit</h2>
-        <p><span class="tbc tbc--q">Street address</span><br><span class="tbc tbc--q">Suburb, State, Postcode</span></p>
-        <p class="footer-gap"><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Serenive+Beauty+%26+Spa" rel="noopener">Get directions</a></p>
+        <p>16 Frost Rd<br>Salisbury SA 5108</p>
+        <p class="footer-gap"><a href="tel:+61881824682">(08) 8182 4682</a></p>
+        <p class="footer-gap"><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=16+Frost+Rd%2C+Salisbury+SA+5108" rel="noopener">Get directions</a></p>
       </div>
       <div>
         <h2>Hours</h2>
-        <dl class="footer-hours"><dt>Mon – Fri</dt><dd><span class="tbc">To come</span></dd><dt>Saturday</dt><dd><span class="tbc">To come</span></dd><dt>Sunday</dt><dd><span class="tbc">To come</span></dd></dl>
+        <dl class="footer-hours"><dt>Mon</dt><dd>9am – 6pm</dd><dt>Tue – Thu</dt><dd>9am – 9pm</dd><dt>Fri</dt><dd>9am – 5pm</dd><dt>Sat</dt><dd>9am – 4pm</dd></dl>
       </div>
       <div>
         <h2>Explore</h2>
-        <ul><li><a href="/">Home</a></li><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Packages</a></li><li><a href="/packages#vouchers">Gift vouchers</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li><li><a href="/book">Book a treatment</a></li></ul>
+        <ul><li><a href="/">Home</a></li><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Rituals</a></li><li><a href="/packages#vouchers">Gift cards</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li><li><a href="/book">Book a treatment</a></li></ul>
       </div>
       <div>
         <h2>Follow</h2>

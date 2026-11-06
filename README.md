@@ -17,9 +17,9 @@ package.json     pins Wrangler, the Cloudflare CLI
 | --- | --- | --- |
 | `/` | `index.html` | Home: hero, why we exist, treatments, the space, packages and vouchers, Instagram, newsletter |
 | `/philosophy` | `philosophy.html` | Why We Exist (client copy, verbatim) |
-| `/treatments` | `treatments.html` | The five treatment categories, each with a Book button |
-| `/treatments/massage` and the other four | `treatments/*.html` | One page per treatment, each with its own share image |
-| `/packages` | `packages.html` | Wellness packages and gift vouchers |
+| `/treatments` | `treatments.html` | The seven menu categories, with from-prices and Book buttons |
+| `/treatments/facials` and six more | `treatments/*.html` | One page per menu category with the full price list and its own share image |
+| `/packages` | `packages.html` | Signature spa rituals and gift cards |
 | `/visit` | `visit.html` | Address, hours, contact form |
 | `/book` | `book.html` | Booking, framed in the site's header and footer, ready for the Square embed |
 
@@ -122,13 +122,24 @@ committing them.
   Worker script (`src/worker.js`, set as `main` in `wrangler.jsonc`) that receives the submission and
   forwards it to the email platform. With no endpoint set, the forms show a preview message.
 
+## The menu
+
+Treatments, durations and prices come from the owners' approved list (Courage Beauty & Spa,
+November 2026) and live in one place: the `TREATMENTS` list in the page builder, which writes the
+category pages. Seasonal offers (for example the Winter Comforter) are deliberately left off the
+site, because they change continually; promote them on Instagram instead. Treatment names should
+match the booking system exactly.
+
+Address, phone, email and treatment hours are on the Visit page, in the footer and in the home
+page's structured data.
+
 ## Content needed from Serenive
 
-- Treatment menu, durations and prices.
-- Package names and inclusions. The three on the packages page are placeholders.
-- Address, phone, email and opening hours.
+- Confirm the contact email: the site currently shows bec@courage.net.au.
+- Sunday hours: none are listed, so Sunday is left off rather than shown as closed.
+- Online booking link (Acuity or Square) and the e-gift card link.
 - Social handles.
-- Professional photography and video of the rooms, treatments and team.
+- Professional photography of the space, team and treatments to replace the stock images.
 
 ## Brand rules (from the design pack)
 
