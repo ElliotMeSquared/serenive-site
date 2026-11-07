@@ -114,6 +114,54 @@
   var preselect = (location.hash || '').slice(1);
   options.forEach(function (o) { if (o.dataset.id === preselect) o.click(); });
 
+  /* Manifesto: wrap each word so it can ink in as the statement scrolls through (CSS does the motion).
+     The heading keeps its plain sentence as its accessible name. */
+  [].forEach.call(document.querySelectorAll('[data-words]'), function (el) {
+    el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    var spans = [];
+    (function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement('span');
+            s.className = 'w'; s.setAttribute('aria-hidden', 'true'); s.textContent = part;
+            spans.push(s); frag.appendChild(s);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && !child.hasAttribute('aria-hidden')) {
+          walk(child);
+        }
+      });
+    })(el);
+    spans.forEach(function (s, i) { s.style.setProperty('--p', (i / Math.max(spans.length - 1, 1)).toFixed(3)); });
+  });
+
+  /* Treatment index: the hovered or focused treatment takes the image stage. */
+  var rows = [].slice.call(document.querySelectorAll('.tindex__row'));
+  var shots = [].slice.call(document.querySelectorAll('.tindex__shot'));
+  var captionNum = document.querySelector('.tindex__caption-num');
+  var current = 0;
+  function activate(i) {
+    if (i === current) return;
+    rows.forEach(function (r, k) { r.classList.toggle('is-active', k === i); });
+    shots.forEach(function (s, k) {
+      s.classList.toggle('was-active', k === current);
+      s.classList.toggle('is-active', k === i);
+    });
+    if (captionNum) captionNum.textContent = (i < 9 ? '0' : '') + (i + 1);
+    current = i;
+  }
+  if (rows.length) {
+    rows[0].classList.add('is-active');
+    rows.forEach(function (r, i) {
+      r.addEventListener('mouseenter', function () { activate(i); });
+      r.addEventListener('focus', function () { activate(i); });
+    });
+  }
+
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
