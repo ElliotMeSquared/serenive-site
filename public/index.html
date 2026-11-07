@@ -51,7 +51,9 @@
 </div>
 <main id="main">
 <section class="hero">
-  <img class="hero__backdrop" src="/assets/photos/hero-bath-window.webp" srcset="/assets/photos/hero-bath-window-sm.webp 800w, /assets/photos/hero-bath-window.webp 2400w" sizes="100vw" alt="" decoding="async" fetchpriority="high">
+  <div class="hero__media" aria-hidden="true">
+    <img class="hero__backdrop" src="/assets/photos/hero-bath-window.webp" srcset="/assets/photos/hero-bath-window-sm.webp 800w, /assets/photos/hero-bath-window.webp 2400w" sizes="100vw" alt="" decoding="async" fetchpriority="high">
+  </div>
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="wrap hero__content">
     <img class="hero__mark" src="/assets/logos/serenive-monogram-ivory.svg" alt="" width="311" height="266">
@@ -59,24 +61,28 @@
     <h1 class="display">More Than Beauty.<br><em>A Feeling of Wellbeing.</em></h1>
     <a class="btn btn--outline" href="/book">Book a treatment</a>
   </div>
-  <span class="hero__scroll" aria-hidden="true"></span>
+  <div class="wrap hero__foot">
+    <p>Beauty &amp; spa<br>Salisbury, South Australia</p>
+    <span class="hero__scroll" aria-hidden="true"></span>
+    <p class="hero__foot-end">16 Frost Rd<br>Open six days</p>
+  </div>
 </section>
 
-<section class="section section--ivory intro" aria-labelledby="why-title">
-  <div class="wrap intro__grid" data-reveal>
-    <div class="intro__label">
+<section class="section section--ivory manifest" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="manifest__label">
       <hr class="rule">
       <p class="eyebrow">Why we exist</p>
     </div>
-    <h2 class="quote" id="why-title">At Serenive, we believe true wellness comes from nurturing both body and mind.</h2>
-    <div class="intro__body">
+    <h2 class="manifest__text" id="why-title" data-words>At Serenive, we believe true wellness comes from nurturing both <em>body</em> and <em>mind.</em></h2>
+    <div class="manifest__foot">
       <p class="lede">Through moments of serenity, thoughtful care and restorative treatments, we invite you to slow down, reconnect and rediscover the beauty of feeling truly well.</p>
       <a class="link" href="/philosophy">Our philosophy</a>
     </div>
   </div>
 </section>
 
-<section class="section section--ivory section--flush-top" aria-labelledby="treat-title">
+<section class="section section--ivory section--flush-top tindex" aria-labelledby="treat-title">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <div class="stack">
@@ -85,67 +91,82 @@
       </div>
       <a class="link" href="/treatments">All treatments</a>
     </div>
-    <div class="cards">
-      <article class="card" data-reveal>
-        <a class="media card__media" href="/treatments/facials" tabindex="-1" aria-hidden="true"><img class="card__inner" src="/assets/photos/facial-clay-brush.webp" srcset="/assets/photos/facial-clay-brush-sm.webp 800w, /assets/photos/facial-clay-brush.webp 1400w" sizes="(max-width: 560px) 78vw, (max-width: 1100px) 42vw, 20vw" alt="" decoding="async" loading="lazy"></a>
-        <h3 class="h3"><a href="/treatments/facials">Facials</a></h3>
-        <p class="eyebrow">From $59</p>
-        <p class="body-sm muted">Thoughtful facials that leave skin calm, nourished and glowing.</p>
-        <div class="card__links">
-          <a class="link" href="/book#facials" aria-label="Book facials">Book</a>
-          <a class="link link--quiet" href="/treatments/facials" aria-label="Facials menu and prices">Menu</a>
-        </div>
-      </article>
-      <article class="card" data-reveal>
-        <a class="media card__media" href="/treatments/massage" tabindex="-1" aria-hidden="true"><img class="card__inner" src="/assets/photos/massage-hands.webp" srcset="/assets/photos/massage-hands-sm.webp 800w, /assets/photos/massage-hands.webp 1400w" sizes="(max-width: 560px) 78vw, (max-width: 1100px) 42vw, 20vw" alt="" decoding="async" loading="lazy"></a>
-        <h3 class="h3"><a href="/treatments/massage">Massage</a></h3>
-        <p class="eyebrow">From $59</p>
-        <p class="body-sm muted">Unhurried massage that eases tension and quietens a busy mind.</p>
-        <div class="card__links">
-          <a class="link" href="/book#massage" aria-label="Book massage">Book</a>
-          <a class="link link--quiet" href="/treatments/massage" aria-label="Massage menu and prices">Menu</a>
-        </div>
-      </article>
-      <article class="card" data-reveal>
-        <a class="media card__media" href="/treatments/hands-and-feet" tabindex="-1" aria-hidden="true"><img class="card__inner" src="/assets/photos/hands-soft.webp" srcset="/assets/photos/hands-soft-sm.webp 800w, /assets/photos/hands-soft.webp 1400w" sizes="(max-width: 560px) 78vw, (max-width: 1100px) 42vw, 20vw" alt="" decoding="async" loading="lazy"></a>
-        <h3 class="h3"><a href="/treatments/hands-and-feet">Hands &amp; feet</a></h3>
-        <p class="eyebrow">From $25</p>
-        <p class="body-sm muted">Manicures, pedicures and renewal rituals with soaks, massage and warm paraffin.</p>
-        <div class="card__links">
-          <a class="link" href="/book#hands-and-feet" aria-label="Book hands and feet">Book</a>
-          <a class="link link--quiet" href="/treatments/hands-and-feet" aria-label="Hands and feet menu and prices">Menu</a>
-        </div>
-      </article>
-      <article class="card" data-reveal>
-        <a class="media card__media" href="/treatments/body-sauna-and-tan" tabindex="-1" aria-hidden="true"><img class="card__inner" src="/assets/photos/body-hot-stones.webp" srcset="/assets/photos/body-hot-stones-sm.webp 800w, /assets/photos/body-hot-stones.webp 1400w" sizes="(max-width: 560px) 78vw, (max-width: 1100px) 42vw, 20vw" alt="" decoding="async" loading="lazy"></a>
-        <h3 class="h3"><a href="/treatments/body-sauna-and-tan">Body, sauna &amp; spray tan</a></h3>
-        <p class="eyebrow">From $30</p>
-        <p class="body-sm muted">Body rituals that renew the skin, plus infrared sauna and spray tans.</p>
-        <div class="card__links">
-          <a class="link" href="/book#body-sauna-and-tan" aria-label="Book body, sauna and spray tan">Book</a>
-          <a class="link link--quiet" href="/treatments/body-sauna-and-tan" aria-label="Body, sauna and spray tan menu and prices">Menu</a>
-        </div>
-      </article>
-      <article class="card" data-reveal>
-        <a class="media card__media" href="/treatments/signature-rituals" tabindex="-1" aria-hidden="true"><img class="card__inner" src="/assets/photos/space-stone-bath.webp" srcset="/assets/photos/space-stone-bath-sm.webp 800w, /assets/photos/space-stone-bath.webp 1400w" sizes="(max-width: 560px) 78vw, (max-width: 1100px) 42vw, 20vw" alt="" decoding="async" loading="lazy"></a>
-        <h3 class="h3"><a href="/treatments/signature-rituals">Signature spa rituals</a></h3>
-        <p class="eyebrow">From $119</p>
-        <p class="body-sm muted">Treatments brought together into one longer ritual, for real time out.</p>
-        <div class="card__links">
-          <a class="link" href="/book#signature-rituals" aria-label="Book signature spa rituals">Book</a>
-          <a class="link link--quiet" href="/treatments/signature-rituals" aria-label="Signature spa rituals menu and prices">Menu</a>
-        </div>
-      </article>
+    <div class="tindex__grid">
+      <ol class="tindex__list">
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/facials" data-index="0">
+          <span class="tindex__num">01</span>
+          <span class="tindex__name">Facials</span>
+          <span class="tindex__desc body-sm">Thoughtful facials that leave skin calm, nourished and glowing.</span>
+          <span class="tindex__price">From $59</span>
+          <img class="tindex__thumb" src="/assets/photos/facial-clay-brush-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/massage" data-index="1">
+          <span class="tindex__num">02</span>
+          <span class="tindex__name">Massage</span>
+          <span class="tindex__desc body-sm">Unhurried massage that eases tension and quietens a busy mind.</span>
+          <span class="tindex__price">From $59</span>
+          <img class="tindex__thumb" src="/assets/photos/massage-hands-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/hands-and-feet" data-index="2">
+          <span class="tindex__num">03</span>
+          <span class="tindex__name">Hands &amp; feet</span>
+          <span class="tindex__desc body-sm">Manicures, pedicures and renewal rituals with soaks, massage and warm paraffin.</span>
+          <span class="tindex__price">From $25</span>
+          <img class="tindex__thumb" src="/assets/photos/hands-soft-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/body-sauna-and-tan" data-index="3">
+          <span class="tindex__num">04</span>
+          <span class="tindex__name">Body, sauna &amp; spray tan</span>
+          <span class="tindex__desc body-sm">Body rituals that renew the skin, plus infrared sauna and spray tans.</span>
+          <span class="tindex__price">From $30</span>
+          <img class="tindex__thumb" src="/assets/photos/body-hot-stones-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/signature-rituals" data-index="4">
+          <span class="tindex__num">05</span>
+          <span class="tindex__name">Signature spa rituals</span>
+          <span class="tindex__desc body-sm">Treatments brought together into one longer ritual, for real time out.</span>
+          <span class="tindex__price">From $119</span>
+          <img class="tindex__thumb" src="/assets/photos/space-stone-bath-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/mum-to-be" data-index="5">
+          <span class="tindex__num">06</span>
+          <span class="tindex__name">Mum-to-be</span>
+          <span class="tindex__desc body-sm">Gentle massage, facials and rituals for the months before baby arrives.</span>
+          <span class="tindex__price">From $89</span>
+          <img class="tindex__thumb" src="/assets/photos/candle-plant-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+        <li class="tindex__item"><a class="tindex__row" href="/treatments/gentlemans-domain" data-index="6">
+          <span class="tindex__num">07</span>
+          <span class="tindex__name">Gentleman’s domain</span>
+          <span class="tindex__desc body-sm">Deep tissue work, men’s facials and recovery rituals with sauna and hot stones.</span>
+          <span class="tindex__price">From $79</span>
+          <img class="tindex__thumb" src="/assets/photos/sauna-sm.webp" alt="" width="800" height="1000" decoding="async" loading="lazy">
+        </a></li>
+      </ol>
+      <div class="tindex__stage" aria-hidden="true">
+        <img class="tindex__shot is-active" src="/assets/photos/facial-clay-brush.webp" srcset="/assets/photos/facial-clay-brush-sm.webp 800w, /assets/photos/facial-clay-brush.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/massage-hands.webp" srcset="/assets/photos/massage-hands-sm.webp 800w, /assets/photos/massage-hands.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/hands-soft.webp" srcset="/assets/photos/hands-soft-sm.webp 800w, /assets/photos/hands-soft.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/body-hot-stones.webp" srcset="/assets/photos/body-hot-stones-sm.webp 800w, /assets/photos/body-hot-stones.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/space-stone-bath.webp" srcset="/assets/photos/space-stone-bath-sm.webp 800w, /assets/photos/space-stone-bath.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/candle-plant.webp" srcset="/assets/photos/candle-plant-sm.webp 800w, /assets/photos/candle-plant.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <img class="tindex__shot" src="/assets/photos/sauna.webp" srcset="/assets/photos/sauna-sm.webp 800w, /assets/photos/sauna.webp 1400w" sizes="40vw" alt="" decoding="async" loading="lazy">
+        <p class="tindex__caption"><span class="tindex__caption-num">01</span> / 07</p>
+      </div>
     </div>
-    <p class="also" data-reveal>Also on the menu: <a href="/treatments/mum-to-be">Mum-to-be</a> and <a href="/treatments/gentlemans-domain">Gentleman’s domain</a> treatments.</p>
   </div>
 </section>
 
-<section class="section section--forest" aria-labelledby="space-title">
+<section class="section section--forest space-band" aria-labelledby="space-title">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group"><span>Relax</span><span class="marquee__dot">·</span><span>Restore</span><span class="marquee__dot">·</span><span>Renew</span><span class="marquee__dot">·</span><span>Breathe</span><span class="marquee__dot">·</span><span>Unwind</span><span class="marquee__dot">·</span></div><div class="marquee__group"><span>Relax</span><span class="marquee__dot">·</span><span>Restore</span><span class="marquee__dot">·</span><span>Renew</span><span class="marquee__dot">·</span><span>Breathe</span><span class="marquee__dot">·</span><span>Unwind</span><span class="marquee__dot">·</span></div>
+    </div>
+  </div>
   <div class="wrap space">
     <div class="space__text" data-reveal>
       <p class="eyebrow">The space</p>
-      <h2 class="h2" id="space-title">A sanctuary from the everyday</h2>
+      <h2 class="h1" id="space-title">A sanctuary from the <em>everyday</em></h2>
       <p class="muted">Soft light, natural textures and quiet rooms, made for slowing down. From the moment you arrive, the pace changes.</p>
       <a class="link" href="/visit">Plan your visit</a>
     </div>
@@ -155,7 +176,16 @@
 </section>
 
 <section class="feature" aria-labelledby="gift-title">
-  <figure class="media media--photo feature__media"><img src="/assets/photos/candle-plant.webp" srcset="/assets/photos/candle-plant-sm.webp 800w, /assets/photos/candle-plant.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" alt="Candle glowing beside a plant" decoding="async" loading="lazy"></figure>
+  <div class="feature__stage">
+    <figure class="media media--photo feature__media"><img src="/assets/photos/candle-plant.webp" srcset="/assets/photos/candle-plant-sm.webp 800w, /assets/photos/candle-plant.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" alt="Candle glowing beside a plant" decoding="async" loading="lazy"></figure>
+    <div class="voucher feature__voucher" role="img" aria-label="Serenive gift card design">
+      <img src="/assets/logos/serenive-horizontal.svg" alt="" width="816" height="198" loading="lazy">
+      <div class="stack voucher__words">
+        <p class="eyebrow">Gift card</p>
+        <p class="voucher__amount">Time to simply be</p>
+      </div>
+    </div>
+  </div>
   <div class="feature__text" data-reveal>
     <p class="eyebrow">Signature rituals &amp; gift cards</p>
     <h2 class="h2" id="gift-title">Give someone time to simply be</h2>
@@ -199,26 +229,27 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
         <img src="/assets/logos/serenive-horizontal-reversed.svg" alt="Serenive Beauty &amp; Spa" width="816" height="198" loading="lazy">
         <p class="footer-tag">More Than Beauty.<br>A Feeling of Wellbeing.</p>
+        <p class="powered">Powered by <a href="https://mesquaredagency.com/" rel="noopener" aria-label="Me Squared"><img src="/assets/logos/me2-logo-light.svg" alt="Me²" width="1499" height="827" loading="lazy"></a></p>
       </div>
-      <div>
+      <div class="footer-col">
         <h2>Visit</h2>
         <p>16 Frost Rd<br>Salisbury SA 5108</p>
-        <p class="footer-gap"><a href="tel:+61881824682">(08) 8182 4682</a></p>
-        <p class="footer-gap"><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=16+Frost+Rd%2C+Salisbury+SA+5108" rel="noopener">Get directions</a></p>
+        <p><a href="tel:+61881824682">(08) 8182 4682</a></p>
+        <p><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=16+Frost+Rd%2C+Salisbury+SA+5108" rel="noopener">Get directions</a></p>
       </div>
-      <div>
+      <div class="footer-col footer-col--hours">
         <h2>Hours</h2>
         <dl class="footer-hours"><dt>Mon</dt><dd>9am – 6pm</dd><dt>Tue – Thu</dt><dd>9am – 9pm</dd><dt>Fri</dt><dd>9am – 5pm</dd><dt>Sat</dt><dd>9am – 4pm</dd><dt>Sun</dt><dd>Closed</dd></dl>
       </div>
-      <div>
+      <div class="footer-col">
         <h2>Explore</h2>
         <ul><li><a href="/">Home</a></li><li><a href="/treatments">Treatments</a></li><li><a href="/packages">Rituals</a></li><li><a href="/packages#vouchers">Gift cards</a></li><li><a href="/philosophy">Philosophy</a></li><li><a href="/visit">Visit</a></li><li><a href="/book">Book a treatment</a></li></ul>
       </div>
-      <div>
+      <div class="footer-col">
         <h2>Follow</h2>
         <ul>
           <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
@@ -229,10 +260,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; <span id="year">2026</span> Serenive Beauty &amp; Spa</p>
-      <div class="footer-bottom__right">
-        <p><a href="https://serenive.com.au/">serenive.com.au</a></p>
-        <p class="powered">Powered by <a href="https://mesquaredagency.com/" rel="noopener">Me²</a></p>
-      </div>
+      <p><a href="https://serenive.com.au/">serenive.com.au</a></p>
     </div>
   </div>
 </footer>

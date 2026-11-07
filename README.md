@@ -140,6 +140,12 @@ page's structured data.
 - Social handles.
 - Professional photography of the space, team and treatments to replace the stock images.
 
+## House rules (Me²)
+
+- **Credit:** every site Me² builds carries "Powered by Me²", linking to https://mesquaredagency.com/,
+  in the footer where it's seen without hunting for it (here: the brand column, under the tagline).
+  Keep it when editing the footer.
+
 ## Brand rules (from the design pack)
 
 Keep to these when editing:
