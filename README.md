@@ -135,8 +135,7 @@ page's structured data.
 
 ## Content needed from Serenive
 
-- Confirm the contact email: the site currently shows bec@courage.net.au.
-- Sunday hours: none are listed, so Sunday is left off rather than shown as closed.
+- Set up the hello@serenive.com.au mailbox (the domain has no mail records yet).
 - Online booking link (Acuity or Square) and the e-gift card link.
 - Social handles.
 - Professional photography of the space, team and treatments to replace the stock images.
