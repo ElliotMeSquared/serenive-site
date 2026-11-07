@@ -605,11 +605,25 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   .footer-brand, .footer-col, .footer-col--hours { grid-column: span 1; }
   .footer-brand { grid-column: 1 / -1; }
 }
+/* Phones: the footer opens with the tagline as a signage moment over the gold leaf line art,
+   a gold rule, then the practical columns, with the site links set in the display face. */
 @media (max-width: 640px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-footer { background: var(--forest) url("../assets/textures/forest-leaf.svg") right -70px top -40px / auto 520px no-repeat; }
+  .site-footer .wrap { padding-top: var(--space-6); gap: var(--space-5); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); }
+  .footer-brand { padding-bottom: var(--space-5); border-bottom: 1px solid var(--rule); }
+  .footer-brand img { height: 30px; margin-top: 0; }
+  .footer-tag { font-size: clamp(30px, 8.6vw, 38px); line-height: 1.15; margin-top: var(--space-5); max-width: 9em; }
+  .powered { margin-top: var(--space-4); }
   .footer-col--hours { grid-column: 1 / -1; }
-  .footer-hours { grid-template-columns: auto auto; justify-content: start; gap: 6px var(--space-4); }
+  .footer-hours { grid-template-columns: auto auto; justify-content: start; gap: 8px var(--space-5); }
   .footer-hours dd { white-space: nowrap; }
+  .footer-col--explore { grid-column: 1 / -1; }
+  .footer-col--explore ul { gap: 10px; }
+  .footer-col--explore a { font-family: var(--font-display); font-size: 24px; line-height: 1.2; }
+  .footer-col--follow { grid-column: 1 / -1; }
+  .footer-col--follow ul { flex-direction: row; flex-wrap: wrap; gap: 6px var(--space-4); }
+  .footer-bottom { flex-direction: column; gap: 6px; }
 }
 
 /* ---------- Signature moments ----------
