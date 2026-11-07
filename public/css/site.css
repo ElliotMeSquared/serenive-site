@@ -500,12 +500,17 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 
 /* Services strip (from the brand board) */
 .services-strip { background: var(--forest); color: var(--on-forest); border-top: 1px solid var(--forest-raised); }
-.services-strip ul { list-style: none; margin: 0; padding: 22px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 0; }
-.services-strip li { font-size: 12px; line-height: 18px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; padding: 0 clamp(14px, 2.4vw, 32px); }
+.services-strip ul {
+  list-style: none; margin: 0; padding: 22px var(--gutter); display: flex; justify-content: safe center;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.services-strip ul::-webkit-scrollbar { display: none; }
+.services-strip li { flex: none; font-size: 12px; line-height: 18px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; padding: 0 clamp(14px, 1.6vw, 22px); white-space: nowrap; }
+.services-strip li:first-child { padding-left: 0; }
+.services-strip li:last-child { padding-right: 0; }
 .services-strip li + li { border-left: 1px solid var(--rule); }
 .services-strip a { text-decoration: none; }
 .services-strip a:hover { color: var(--gold); }
-@media (max-width: 640px) { .services-strip li + li { border-left: 0; } .services-strip li { flex-basis: 50%; text-align: center; } }
 
 /* Packages page */
 .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
@@ -592,7 +597,7 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 /* ---------- Signature moments ----------
    The layer that makes the site feel crafted rather than templated: an editorial hero frame,
    a manifesto that inks in as you read, a treatment index with an image stage, a slow marquee,
-   images that unveil and drift, page-to-page transitions and an oversized footer wordmark.
+   images that unveil and drift and page-to-page transitions.
    Scroll-linked effects use CSS scroll timelines (they run off the main thread). Browsers without
    them simply show the finished state. Everything here is off for visitors who prefer reduced motion. */
 
@@ -617,11 +622,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   max-width: 15em;
 }
 .manifest__text em { font-style: italic; }
-.manifest__img {
-  display: inline-block; vertical-align: middle; position: relative; overflow: hidden;
-  width: 1.7em; height: .78em; margin: -.1em .02em 0; background: var(--hairline);
-}
-.manifest__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .manifest__foot {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-4);
   margin-top: clamp(40px, 6vw, 88px); align-items: end;
@@ -687,7 +687,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   font-family: var(--font-display); font-style: italic; font-size: clamp(64px, 11vw, 168px); line-height: 1.25;
   padding: .06em .28em; white-space: nowrap; color: var(--on-forest);
 }
-.marquee__group .marquee__word--outline { color: transparent; -webkit-text-stroke: 1px var(--on-forest-muted); }
 .marquee__group .marquee__dot { color: var(--gold); font-style: normal; font-size: clamp(32px, 4vw, 56px); padding: 0; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 .space .h1 em { font-style: italic; }
@@ -701,14 +700,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   transform: translate(-50%, -50%) rotate(-5deg); z-index: 1;
 }
 .feature__voucher img { width: 150px; }
-
-/* Footer wordmark */
-.footer-word {
-  font-family: var(--font-display); font-weight: 400; line-height: .8; letter-spacing: -0.03em;
-  font-size: clamp(72px, 19.5vw, 300px); margin: 0 0 calc(-1 * var(--space-3));
-  color: transparent; -webkit-text-stroke: 1px var(--forest-raised);
-  white-space: nowrap; overflow: hidden; user-select: none;
-}
 
 /* Scroll-linked motion (progressive: only where scroll timelines exist, never for reduced motion) */
 @media (prefers-reduced-motion: no-preference) {
@@ -725,7 +716,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
       animation: ink linear both; animation-timeline: --manifest;
       animation-range: cover calc(18% + var(--p) * 34%) cover calc(24% + var(--p) * 34%);
     }
-    .manifest__img { animation: widen linear both; animation-timeline: --manifest; animation-range: cover 15% cover 40%; }
 
     /* Photographs unveil from the bottom edge and settle */
     .space .media, .split__media.media, .feature__stage {
@@ -747,7 +737,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 @keyframes hero-push { to { transform: scale(1.12); } }
 @keyframes hero-leave { to { opacity: 0; transform: translateY(-12vh); } }
 @keyframes ink { from { color: #7a8975; } to { color: var(--ink); } }
-@keyframes widen { from { width: 0; margin-inline: 0; } to { width: 1.7em; } }
 @keyframes unveil { from { clip-path: inset(18% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes drift { from { transform: scale(1.14) translateY(-3%); } to { transform: scale(1.14) translateY(3%); } }
 @keyframes lift { from { translate: 0 12%; } to { translate: 0 -12%; } }
