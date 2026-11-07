@@ -264,6 +264,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .book-bar {
   display: none;
   position: fixed; inset: auto 0 0; z-index: 40;
+  transform: translateY(110%); transition: transform 500ms var(--ease);
   background: var(--forest); color: var(--on-forest);
   border-top: 1px solid var(--forest-raised);
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
@@ -271,6 +272,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .book-bar p { font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 22px; }
 .book-bar .btn { min-height: 44px; padding: 0 20px; }
+.past-hero .book-bar { transform: none; }
 
 @media (max-width: 1140px) {
   .nav__links, .site-header .nav > .btn { display: none; }
@@ -429,6 +431,8 @@ img.card__inner { width: 100%; height: 100%; object-fit: cover; }
 .feature__text .eyebrow { color: var(--ink-muted); }
 @media (max-width: 860px) {
   .feature { grid-template-columns: 1fr; }
+  .feature__stage { min-height: 380px; }
+  .feature__voucher { width: min(70%, 300px); }
   .feature__text { padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); }
 }
 
@@ -601,11 +605,25 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   .footer-brand, .footer-col, .footer-col--hours { grid-column: span 1; }
   .footer-brand { grid-column: 1 / -1; }
 }
+/* Phones: the footer opens with the tagline as a signage moment over the gold leaf line art,
+   a gold rule, then the practical columns, with the site links set in the display face. */
 @media (max-width: 640px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-footer { background: var(--forest) url("../assets/textures/forest-leaf.svg") right -70px top -40px / auto 520px no-repeat; }
+  .site-footer .wrap { padding-top: var(--space-6); gap: var(--space-5); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); }
+  .footer-brand { padding-bottom: var(--space-5); border-bottom: 1px solid var(--rule); }
+  .footer-brand img { height: 30px; margin-top: 0; }
+  .footer-tag { font-size: clamp(30px, 8.6vw, 38px); line-height: 1.15; margin-top: var(--space-5); max-width: 9em; }
+  .powered { margin-top: var(--space-4); }
   .footer-col--hours { grid-column: 1 / -1; }
-  .footer-hours { grid-template-columns: auto auto; justify-content: start; gap: 6px var(--space-4); }
+  .footer-hours { grid-template-columns: auto auto; justify-content: start; gap: 8px var(--space-5); }
   .footer-hours dd { white-space: nowrap; }
+  .footer-col--explore { grid-column: 1 / -1; }
+  .footer-col--explore ul { gap: 10px; }
+  .footer-col--explore a { font-family: var(--font-display); font-size: 24px; line-height: 1.2; }
+  .footer-col--follow { grid-column: 1 / -1; }
+  .footer-col--follow ul { flex-direction: row; flex-wrap: wrap; gap: 6px var(--space-4); }
+  .footer-bottom { flex-direction: column; gap: 6px; }
 }
 
 /* ---------- Signature moments ----------
@@ -626,6 +644,18 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 }
 .hero__foot-end { text-align: right; }
 @media (max-width: 760px) { .hero__foot p { display: none; } .hero__foot { grid-template-columns: 1fr; justify-items: center; } }
+
+/* Phones: the hero becomes a cover, with the words set low and left */
+@media (max-width: 760px) {
+  .hero { justify-content: flex-end; padding-top: calc(110px + env(safe-area-inset-top, 0px)); padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
+  .hero__backdrop { object-position: 64% 50%; }
+  .hero__content { text-align: left; align-items: flex-start; gap: var(--space-4); }
+  .hero__mark { width: 52px; margin-bottom: var(--space-2); }
+  .hero .display { font-size: clamp(44px, 12.6vw, 64px); }
+  .hero .btn { width: 100%; }
+  .hero__foot { display: none; }
+  .lede { font-size: 17px; line-height: 28px; }
+}
 
 /* Manifesto: oversized statement that inks in word by word as it scrolls through */
 .manifest { padding-block: clamp(96px, 14vw, 200px) clamp(72px, 10vw, 144px); }
@@ -683,14 +713,37 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   position: absolute; left: 16px; bottom: 14px; z-index: 2; margin: 0;
   font-size: 11px; letter-spacing: .24em; color: var(--ivory); mix-blend-mode: difference;
 }
+.tindex__progress { display: none; }
 @media (max-width: 900px) {
-  .tindex__grid { grid-template-columns: 1fr; }
+  .tindex__grid { grid-template-columns: 1fr; gap: 0; timeline-scope: --tindex; }
   .tindex__stage { display: none; }
-  .tindex__row { grid-template-columns: 76px minmax(0, 1fr); grid-template-areas: "thumb num" "thumb name" "thumb price"; row-gap: 2px; align-items: center; }
-  .tindex__thumb { display: block; grid-area: thumb; width: 76px; height: 96px; object-fit: cover; }
+  .tindex__list {
+    display: flex; gap: var(--space-3); border-top: 0;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+    scroll-timeline: --tindex x;
+  }
+  .tindex__list::-webkit-scrollbar { display: none; }
+  .tindex__item { flex: 0 0 74vw; max-width: 360px; border: 0; scroll-snap-align: start; }
+  .tindex__row {
+    grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "thumb thumb" "num name" ". price";
+    gap: 2px var(--space-3); padding: 0; align-items: baseline;
+  }
+  .tindex__thumb { display: block; grid-area: thumb; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; margin-bottom: var(--space-3); background: var(--hairline); }
   .tindex__desc { display: none; }
+  .tindex__name { font-size: 26px; }
+  .tindex__price { justify-self: start; }
   .tindex__row:hover .tindex__name, .tindex__row.is-active .tindex__name { transform: none; font-style: normal; }
+  .tindex__progress { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-5); }
+  .tindex__bar { flex: 1; height: 1px; background: var(--hairline); position: relative; }
+  .tindex__bar::before { content: ""; position: absolute; inset: 0; background: var(--rule); transform-origin: left; transform: scaleX(.3); }
+  .tindex__count { font-size: 11px; letter-spacing: .24em; color: var(--ink-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tindex__count b { font-weight: 500; color: var(--ink); }
+  @supports (animation-timeline: scroll()) {
+    .tindex__bar::before { animation: bar linear both; animation-timeline: --tindex; }
+  }
 }
+@keyframes bar { from { transform: scaleX(.3); } to { transform: scaleX(1); } }
 
 /* Marquee: slow ribbon of words across the forest band */
 .space-band { overflow: hidden; padding-top: 0; }
@@ -739,7 +792,7 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
       animation: drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;
     }
     .space__b { animation: unveil linear both, lift linear both; animation-timeline: view(), view(); animation-range: entry 0% entry 90%, cover 0% cover 100%; }
-    .feature__voucher { animation: float linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    @media (min-width: 861px) { .feature__voucher { animation: float linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; } }
   }
 
   /* Page to page: a soft cross-fade with a slight rise; the header stays put */
