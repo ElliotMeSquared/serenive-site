@@ -43,7 +43,7 @@ The site runs at http://localhost:8787, served the same way Cloudflare serves it
 
 One-time setup in the Cloudflare dashboard:
 
-1. **Workers & Pages → Create → Import a repository**, then choose `ElliotMeSquared/serenive-site`.
+1. **Workers & Pages → Create → Import a repository**, then choose `MeSquaredAgency/serenive-site`.
 2. Leave the build command empty. The deploy command is `npx wrangler deploy`.
 3. Production branch: `main`. Pushes to `main` go live; other branches get preview URLs.
 
@@ -124,7 +124,7 @@ committing them.
 
 ## The menu
 
-Treatments, durations and prices come from the owners' approved list (Courage Beauty & Spa,
+Treatments, durations and prices come from the owners' approved list (Serenive Beauty & Spa,
 November 2026) and live in one place: the `TREATMENTS` list in the page builder, which writes the
 category pages. Seasonal offers (for example the Winter Comforter) are deliberately left off the
 site, because they change continually; promote them on Instagram instead. Treatment names should
