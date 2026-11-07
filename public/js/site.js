@@ -21,7 +21,7 @@
     queued = false;
     if (!header) return;
     var next = !opener || window.scrollY > limit;
-    if (next !== solid) { solid = next; header.classList.toggle('is-solid', next); }
+    if (next !== solid) { solid = next; header.classList.toggle('is-solid', next); root.classList.toggle('past-hero', next); }
   }
   measure(); updateHeader();
   window.addEventListener('scroll', function () {
@@ -160,6 +160,19 @@
       r.addEventListener('mouseenter', function () { activate(i); });
       r.addEventListener('focus', function () { activate(i); });
     });
+  }
+  /* On phones the list is a swipe strip: the counter follows the card in view. */
+  var strip = document.querySelector('.tindex__list');
+  var count = document.querySelector('.tindex__count b');
+  if (strip && count && 'IntersectionObserver' in window && window.matchMedia('(max-width: 900px)').matches) {
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var i = rows.indexOf(entry.target);
+        if (i > -1) count.textContent = (i < 9 ? '0' : '') + (i + 1);
+      });
+    }, { root: strip, threshold: 0.6 });
+    rows.forEach(function (r) { sio.observe(r); });
   }
 
   var year = document.getElementById('year');
