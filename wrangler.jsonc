@@ -23,6 +23,16 @@
   },
   "observability": { "enabled": true },
   // Branch previews (Workers Builds runs `wrangler preview` on non-main branches).
-  // Previews share the bindings above, so a form sent from a preview reaches the real inbox.
-  "previews": {}
+  // Previews do NOT inherit the bindings above: anything the Worker reads from `env` has to be
+  // listed again here, or the preview runs without it. They point at the same store and inbox,
+  // so a form sent from a preview reaches hello@ like a real one.
+  "previews": {
+    "send_email": [{ "name": "EMAIL" }],
+    "kv_namespaces": [{ "binding": "FORMS", "id": "d01e8fe1a22e400cb4457d18e3da31bd" }],
+    "vars": {
+      "CONTACT_TO": "hello@serenive.com.au",
+      "FROM_ADDRESS": "website@mail.serenive.com.au",
+      "FROM_NAME": "Serenive website"
+    }
+  }
 }
