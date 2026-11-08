@@ -83,12 +83,15 @@
       note.textContent = text;
       note.classList.toggle('is-error', !!isError);
     }
+    var busy = false;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (busy) return;
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var endpoint = form.getAttribute('data-endpoint');
       if (!endpoint) { say(form.getAttribute('data-preview-message') || 'This form is not connected yet.'); return; }
-      if (button) button.setAttribute('aria-disabled', 'true');
+      busy = true;
+      if (button) { button.disabled = true; button.setAttribute('aria-disabled', 'true'); }
       say('Sending…');
       fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json().then(function (data) { return { ok: r.ok && data.ok, data: data }; }); })
@@ -101,7 +104,10 @@
         .catch(function (err) {
           say((err && err.message) || 'That didn’t go through. Please try again, or email hello@serenive.com.au.', true);
         })
-        .then(function () { if (button) button.removeAttribute('aria-disabled'); });
+        .then(function () {
+          busy = false;
+          if (button) { button.disabled = false; button.removeAttribute('aria-disabled'); }
+        });
     });
   });
 
