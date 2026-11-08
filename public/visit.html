@@ -83,7 +83,8 @@
     <div class="split__text" data-reveal>
       <p class="eyebrow">Send us a message</p>
       <h2 class="h2" id="contact-title">We’d love to hear from you</h2>
-      <form class="contact-form" data-form data-endpoint="" data-preview-message="Thank you. The contact form isn’t connected yet, as this is a preview of the new site." data-success="Thank you. We’ll be in touch soon. The Serenive team" novalidate>
+      <form class="contact-form" data-form data-endpoint="/api/contact" data-success="Thank you. Your message is on its way to the team, and we’ll be in touch soon." novalidate>
+        <div class="hp" aria-hidden="true"><label for="c-website">Website</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <label for="c-name">Name<input class="field" id="c-name" name="name" autocomplete="name" required></label>
         <label for="c-email">Email<input class="field" id="c-email" name="email" type="email" autocomplete="email" required></label>
         <label class="full" for="c-phone">Phone (optional)<input class="field" id="c-phone" name="phone" type="tel" autocomplete="tel"></label>

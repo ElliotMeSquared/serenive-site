@@ -70,26 +70,38 @@
     });
   }
 
-  /* Forms: no back end is connected yet. Each form names its future endpoint in data-endpoint. */
+  /* Forms post to the Worker named in data-endpoint (src/worker.js). A hidden timestamp lets the
+     Worker ignore instant, scripted submits. Without an endpoint the form shows a preview message. */
   [].forEach.call(document.querySelectorAll('form[data-form]'), function (form) {
-    var note = form.querySelector('.form-note');
+    var note = form.querySelector('.form-note') || (form.nextElementSibling && form.nextElementSibling.classList.contains('form-note') ? form.nextElementSibling : null);
+    var button = form.querySelector('[type="submit"]');
+    var stamp = document.createElement('input');
+    stamp.type = 'hidden'; stamp.name = 't'; stamp.value = String(Date.now());
+    form.appendChild(stamp);
+    function say(text, isError) {
+      if (!note) return;
+      note.textContent = text;
+      note.classList.toggle('is-error', !!isError);
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var endpoint = form.getAttribute('data-endpoint');
-      if (!endpoint) {
-        if (note) note.textContent = form.getAttribute('data-preview-message') || 'This form is not connected yet.';
-        return;
-      }
-      fetch(endpoint, { method: 'POST', body: new FormData(form) })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          if (note) note.textContent = form.getAttribute('data-success') || 'Thank you.';
+      if (!endpoint) { say(form.getAttribute('data-preview-message') || 'This form is not connected yet.'); return; }
+      if (button) button.setAttribute('aria-disabled', 'true');
+      say('Sending…');
+      fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json().then(function (data) { return { ok: r.ok && data.ok, data: data }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.data && res.data.error);
+          say(form.getAttribute('data-success') || 'Thank you.');
           form.reset();
+          stamp.value = String(Date.now());
         })
-        .catch(function () {
-          if (note) note.textContent = 'That didn’t go through. Please try again, or email us directly.';
-        });
+        .catch(function (err) {
+          say((err && err.message) || 'That didn’t go through. Please try again, or email hello@serenive.com.au.', true);
+        })
+        .then(function () { if (button) button.removeAttribute('aria-disabled'); });
     });
   });
 

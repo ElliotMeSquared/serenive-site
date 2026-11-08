@@ -7,7 +7,8 @@ The website for Serenive Beauty & Spa, built from the Serenive design pack. It's
 public/          the website, served as-is
   _headers       response headers (includes the pre-launch noindex)
   404.html       branded not-found page
-wrangler.jsonc   Cloudflare Worker config
+src/worker.js    the Worker behind the contact and newsletter forms
+wrangler.jsonc   Cloudflare Worker config (assets, email and KV bindings)
 package.json     pins Wrangler, the Cloudflare CLI
 ```
 
@@ -37,7 +38,8 @@ npm run dev
 ```
 
 The site runs at http://localhost:8787, served the same way Cloudflare serves it. Edit the files in
-`public/` directly: there's no build step.
+`public/` directly: there's no build step. The forms work locally too: the email binding is
+simulated (messages are logged in the terminal, not sent) and KV is a local store.
 
 ## Deploying (Cloudflare Workers Builds)
 
@@ -86,7 +88,7 @@ One-time setup in the Cloudflare dashboard:
 - [ ] Replace every `.tbc` placeholder (search the code for `class="tbc`).
 - [ ] Swap brand textures for photography (see below).
 - [ ] Add the address, phone and opening hours to the `DaySpa` structured data in `index.html`.
-- [ ] Connect Square booking, gift vouchers and the forms (see below).
+- [ ] Connect online booking and gift vouchers (see below). The forms are connected.
 - [ ] Point the social links at the confirmed handles.
 - [ ] Submit `https://serenive.com.au/sitemap.xml` in Google Search Console.
 
@@ -118,9 +120,29 @@ committing them.
   put the Square booking URL in `data-square-url` on `#booking-continue`. In Square, set the button
   colour to Forest `#2F4A3B` and upload `serenive-monogram` as the logo.
 - **Gift vouchers:** point the "Buy a gift voucher" button in `public/packages.html` at Square eGift Cards.
-- **Newsletter and contact forms:** set `data-endpoint` on each `<form data-form>`. The plan is a small
-  Worker script (`src/worker.js`, set as `main` in `wrangler.jsonc`) that receives the submission and
-  forwards it to the email platform. With no endpoint set, the forms show a preview message.
+
+## Forms and email
+
+`src/worker.js` answers two endpoints; everything else is served as a static asset.
+
+- `POST /api/contact` (the Visit page) emails the message to `hello@serenive.com.au` with the
+  visitor's address as Reply-To, so the team answers from their inbox.
+- `POST /api/newsletter` (home and Rituals pages) stores the address and emails the team a note.
+
+Mail goes out through **Cloudflare Email Service** from `website@mail.serenive.com.au`.
+`mail.serenive.com.au` is a sending subdomain on the zone, with its own SPF, DKIM and DMARC, so it
+never collides with the Google Workspace records on the apex that run the hello@ mailbox.
+
+Every submission is also written to the KV namespace `serenive-site-forms` (Me² account):
+`contact:<time>:<id>` entries are kept for 90 days, `subscriber:<email>` entries are kept until the
+list moves to an email platform. Export subscribers from the Cloudflare dashboard (Storage & Databases
+→ KV) or with `npx wrangler kv key list --namespace-id d01e8fe1a22e400cb4457d18e3da31bd --prefix subscriber:`.
+
+Spam handling, in order: same-origin check, a honeypot field (`website`), a three-second minimum fill
+time (the `t` field the script adds), and six submissions an hour per address. Spam gets a quiet
+"ok". If it ever becomes a problem, Cloudflare Turnstile is the next step.
+
+Settings live in `wrangler.jsonc` under `vars` (`CONTACT_TO`, `FROM_ADDRESS`, `FROM_NAME`).
 
 ## The menu
 
@@ -135,7 +157,6 @@ page's structured data.
 
 ## Content needed from Serenive
 
-- Set up the hello@serenive.com.au mailbox (the domain has no mail records yet).
 - Online booking link (Acuity or Square) and the e-gift card link.
 - Social handles.
 - Professional photography of the space, team and treatments to replace the stock images.

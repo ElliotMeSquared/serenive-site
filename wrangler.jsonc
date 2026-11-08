@@ -2,15 +2,27 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "serenive-site",
   "compatibility_date": "2026-10-01",
-  // Static site served from ./public. A Worker script (src/worker.js) can be added later
-  // for the contact and newsletter forms; see README.
+  // The site is static files in ./public. The Worker in src/worker.js only answers the two
+  // form endpoints (/api/contact and /api/newsletter); everything else is served as an asset.
+  "main": "src/worker.js",
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
+  // Outgoing email: Cloudflare Email Service, from the sending subdomain mail.serenive.com.au.
+  // With `wrangler dev` the binding is simulated and emails are logged, not sent.
+  "send_email": [{ "name": "EMAIL" }],
+  // Form submissions and newsletter sign-ups (namespace "serenive-site-forms" in the Me² account).
+  "kv_namespaces": [{ "binding": "FORMS", "id": "d01e8fe1a22e400cb4457d18e3da31bd" }],
+  "vars": {
+    "CONTACT_TO": "hello@serenive.com.au",
+    "FROM_ADDRESS": "website@mail.serenive.com.au",
+    "FROM_NAME": "Serenive website"
+  },
   "observability": { "enabled": true },
   // Branch previews (Workers Builds runs `wrangler preview` on non-main branches).
-  // Assets and compatibility settings above apply to previews too.
+  // Previews share the bindings above, so a form sent from a preview reaches the real inbox.
   "previews": {}
 }
