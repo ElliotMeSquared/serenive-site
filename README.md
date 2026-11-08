@@ -87,7 +87,6 @@ One-time setup in the Cloudflare dashboard:
 - [ ] Remove `data-draft` from the `<html>` tag on every page.
 - [ ] Replace every `.tbc` placeholder (search the code for `class="tbc`).
 - [ ] Swap brand textures for photography (see below).
-- [ ] Add the address, phone and opening hours to the `DaySpa` structured data in `index.html`.
 - [ ] Connect online booking and gift vouchers (see below). The forms are connected.
 - [ ] Point the social links at the confirmed handles.
 - [ ] Submit `https://serenive.com.au/sitemap.xml` in Google Search Console.
@@ -120,6 +119,24 @@ committing them.
   put the Square booking URL in `data-square-url` on `#booking-continue`. In Square, set the button
   colour to Forest `#2F4A3B` and upload `serenive-monogram` as the logo.
 - **Gift vouchers:** point the "Buy a gift voucher" button in `public/packages.html` at Square eGift Cards.
+
+## Search, analytics and small comforts
+
+- **Structured data.** The home page declares the `DaySpa` (address, phone, hours). Each treatment page
+  declares a `Service` with an `OfferCatalog` of every menu item (name, duration, price in AUD) and a
+  `BreadcrumbList`; the treatments index declares an `ItemList`. It is generated from the menu markup,
+  so when prices change in the HTML, regenerate or edit the JSON-LD in the same page's `<head>`.
+  Check with https://search.google.com/test/rich-results.
+- **Analytics.** Cloudflare Web Analytics, loaded by the beacon script at the end of every page.
+  Cookieless, so no consent banner. Reports live in the Me² Cloudflare account under Analytics &
+  Logs → Web Analytics (site `serenive.com.au`). Automatic injection is switched off for the zone so
+  the beacon is not counted twice.
+- **Instant navigation.** A Speculation Rules block in every `<head>` prefetches same-site links as the
+  pointer approaches them (`eagerness: moderate`), excluding `/api/*`. Browsers without support ignore it.
+- **Open now.** `[data-open-status]` elements (home hero caption, Visit page, mobile menu) are filled by
+  `site.js` from the hours table at the top of the open-now block, in Adelaide time. Public holidays are
+  not known to it, so the wording stays soft. If the hours change, update the table there, the Visit
+  page, the footer and the `DaySpa` data on the home page.
 
 ## Forms and email
 

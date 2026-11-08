@@ -647,6 +647,15 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .hero__foot-end { text-align: right; }
 @media (max-width: 760px) { .hero__foot p { display: none; } .hero__foot { grid-template-columns: 1fr; justify-items: center; } }
 
+/* Open now: a small dot, gold while open, muted when closed. Text comes from site.js. */
+.has-status::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; opacity: .45; margin-right: 8px; vertical-align: 1px;
+}
+.has-status.is-open::before { background: var(--gold); opacity: 1; }
+.open-status { color: var(--ink-muted); margin-top: var(--space-2); }
+.menu-sheet__status { color: var(--on-forest-muted); }
+
 /* Phones: the hero becomes a cover, with the words set low and left */
 @media (max-width: 760px) {
   .hero { justify-content: flex-end; padding-top: calc(110px + env(safe-area-inset-top, 0px)); padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
