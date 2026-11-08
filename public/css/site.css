@@ -595,13 +595,15 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .footer-hours { display: grid; grid-template-columns: auto 1fr; gap: 6px var(--space-3); margin: 0; font-variant-numeric: tabular-nums; }
 .footer-hours dd { margin: 0; }
 .footer-tag { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 30px; margin-top: var(--space-4); }
-.powered { margin-top: var(--space-5); display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .08em; color: var(--on-forest-muted); }
-.powered a { display: block; transition: opacity 400ms var(--ease); }
-.powered a:hover { opacity: .75; }
-.powered img { height: 26px; width: auto; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--forest-raised); font-size: 13px; color: var(--on-forest-muted); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--forest-raised); font-size: 13px; color: var(--on-forest-muted); }
+.footer-bottom__left { display: flex; flex-direction: column; gap: 4px; }
 .footer-bottom a { text-decoration: none; }
 .footer-bottom a:hover { color: var(--on-forest); }
+/* The Me² credit (house rule, see README): quiet, bottom right. */
+.powered { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .06em; color: var(--on-forest-muted); }
+.powered a { display: block; opacity: .85; transition: opacity 400ms var(--ease); }
+.powered a:hover { opacity: 1; }
+.powered img { height: 18px; width: auto; }
 @media (max-width: 1100px) {
   .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .footer-brand, .footer-col, .footer-col--hours { grid-column: span 1; }
@@ -616,7 +618,6 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   .footer-brand { padding-bottom: var(--space-5); border-bottom: 1px solid var(--rule); }
   .footer-brand img { height: 30px; margin-top: 0; }
   .footer-tag { font-size: clamp(30px, 8.6vw, 38px); line-height: 1.15; margin-top: var(--space-5); max-width: 9em; }
-  .powered { margin-top: var(--space-4); }
   .footer-col--hours { grid-column: 1 / -1; }
   .footer-hours { grid-template-columns: auto auto; justify-content: start; gap: 8px var(--space-5); }
   .footer-hours dd { white-space: nowrap; }
@@ -625,7 +626,7 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
   .footer-col--explore a { font-family: var(--font-display); font-size: 24px; line-height: 1.2; }
   .footer-col--follow { grid-column: 1 / -1; }
   .footer-col--follow ul { flex-direction: row; flex-wrap: wrap; gap: 6px var(--space-4); }
-  .footer-bottom { flex-direction: column; gap: 6px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
 }
 
 /* ---------- Signature moments ----------
