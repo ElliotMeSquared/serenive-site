@@ -459,6 +459,8 @@ img.card__inner { width: 100%; height: 100%; object-fit: cover; }
 .field:focus { outline: 2px solid var(--forest); outline-offset: 0; border-color: var(--forest); }
 textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .form-note { min-height: 22px; color: var(--ink-muted); }
+.form-note.is-error { color: var(--accent); }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; } /* honeypot: people never see it, bots fill it */
 @media (max-width: 480px) { .signup { flex-direction: column; } }
 
 /* ---------- Split rows ---------- */
