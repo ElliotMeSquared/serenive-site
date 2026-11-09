@@ -193,6 +193,42 @@
     rows.forEach(function (r) { sio.observe(r); });
   }
 
+  /* Open now: worked out from the treatment hours in Adelaide time. Mon 9–6, Tue–Thu 9–9, Fri 9–5,
+     Sat 9–4, Sun closed. Public holidays are not known here, so the wording stays soft. */
+  var HOURS = { 0: null, 1: [9, 18], 2: [9, 21], 3: [9, 21], 4: [9, 21], 5: [9, 17], 6: [9, 16] };
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  function clock(h) { var s = h % 12 === 0 ? 12 : h % 12; return s + (h < 12 ? 'am' : 'pm'); }
+  function openStatus(now) {
+    var parts = {};
+    new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Adelaide', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+      .formatToParts(now).forEach(function (p) { parts[p.type] = p.value; });
+    var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.weekday);
+    var t = Number(parts.hour) + Number(parts.minute) / 60;
+    var today = HOURS[day];
+    if (today && t >= today[0] && t < today[1]) {
+      return { open: true, text: today[1] - t <= 1 ? 'Open now · closes soon, ' + clock(today[1]) : 'Open now · until ' + clock(today[1]) };
+    }
+    if (today && t < today[0]) return { open: false, text: 'Opens today at ' + clock(today[0]) };
+    for (var i = 1; i <= 7; i++) {
+      var d = (day + i) % 7;
+      if (HOURS[d]) return { open: false, text: 'Opens ' + (i === 1 ? 'tomorrow' : DAYS[d]) + ' at ' + clock(HOURS[d][0]) };
+    }
+    return { open: false, text: '' };
+  }
+  var statusEls = [].slice.call(document.querySelectorAll('[data-open-status]'));
+  function paintStatus() {
+    var s;
+    try { s = openStatus(new Date()); } catch (e) { return; }
+    statusEls.forEach(function (el) {
+      if (!s.text) { el.textContent = el.getAttribute('data-open-fallback') || ''; return; }
+      el.textContent = s.text;
+      el.classList.toggle('is-open', s.open);
+      el.classList.add('has-status');
+      el.hidden = false;
+    });
+  }
+  if (statusEls.length) { paintStatus(); setInterval(paintStatus, 60000); }
+
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();

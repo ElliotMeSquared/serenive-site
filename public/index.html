@@ -23,6 +23,7 @@
 <link rel="preload" href="/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"DaySpa","name":"Serenive Beauty & Spa","url":"https://serenive.com.au/","logo":"https://serenive.com.au/assets/logos/serenive-primary.svg","image":"https://serenive.com.au/assets/og/serenive-share.png","slogan":"More Than Beauty. A Feeling of Wellbeing.","telephone":"+61881824682","email":"hello@serenive.com.au","priceRange":"$25 – $399","address":{"@type":"PostalAddress","streetAddress":"16 Frost Rd","addressLocality":"Salisbury","addressRegion":"SA","postalCode":"5108","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"09:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"09:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00"}]}</script>
+<script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/api/*"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -46,6 +47,7 @@
   <div class="stack">
     <a class="btn btn--gold" href="/book">Book a treatment</a>
     <p class="menu-sheet__phone"><a href="tel:+61881824682">(08) 8182 4682</a></p>
+    <p class="menu-sheet__status body-sm" data-open-status hidden></p>
     <p class="eyebrow">Relax · Restore · Renew</p>
   </div>
 </div>
@@ -64,7 +66,7 @@
   <div class="wrap hero__foot">
     <p>Beauty &amp; spa<br>Salisbury, South Australia</p>
     <span class="hero__scroll" aria-hidden="true"></span>
-    <p class="hero__foot-end">16 Frost Rd<br>Open six days</p>
+    <p class="hero__foot-end">16 Frost Rd<br><span data-open-status data-open-fallback="Open six days">Open six days</span></p>
   </div>
 </section>
 
@@ -274,5 +276,6 @@
 </div>
 <script src="/js/vendor/lenis-1.3.27.min.js" defer></script>
 <script src="/js/site.js" defer></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0fc3ba5055c3443ebf42e74deff23aa5"}'></script>
 </body>
 </html>
