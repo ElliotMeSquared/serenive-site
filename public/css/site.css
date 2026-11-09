@@ -623,10 +623,12 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .footer-bottom a { text-decoration: none; }
 .footer-bottom a:hover { color: var(--on-forest); }
 /* The Me² credit (house rule, see README): quiet, bottom right. */
-.powered { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .06em; color: var(--on-forest-muted); }
+.powered { display: flex; align-items: baseline; gap: 7px; font-size: 12px; letter-spacing: .06em; color: var(--on-forest-muted); }
 .powered a { display: block; opacity: .85; transition: opacity 400ms var(--ease); }
 .powered a:hover { opacity: 1; }
-.powered img { height: 18px; width: auto; }
+/* The logo's "2" sits above the "me", so the image box is taller than the word: align the word's
+   baseline (the image's bottom edge) with the text baseline instead of centring the box. */
+.powered img { display: block; height: 15px; width: auto; }
 @media (max-width: 1100px) {
   .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .footer-brand, .footer-col, .footer-col--hours { grid-column: span 1; }
