@@ -502,6 +502,29 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .manifesto__body .first { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.4; margin-bottom: var(--space-5); }
 .manifesto__body p { font-size: 17px; line-height: 30px; }
 @media (max-width: 860px) { .manifesto__side, .manifesto__body { grid-column: 1 / -1; } }
+
+/* Legal pages (privacy): the manifesto layout with headings, lists and an on-page contents list. */
+.legal { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-4); align-items: start; }
+.legal__side { grid-column: 1 / span 3; position: sticky; top: 112px; }
+.legal__body { grid-column: 5 / span 7; min-width: 0; max-width: 38em; }
+.legal__body .first { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; margin-bottom: var(--space-5); }
+.legal__body p, .legal__body li { font-size: 17px; line-height: 30px; }
+.legal__body h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; margin: var(--space-6) 0 var(--space-3); scroll-margin-top: 112px; }
+.legal__body ul { margin: 0; padding-left: 1.2em; color: var(--ink); }
+.legal__body li + li { margin-top: var(--space-2); }
+.legal__body li::marker { color: var(--ink-muted); }
+.legal__body ul + p, .legal__body p + ul { margin-top: var(--space-4); }
+.legal__body strong { font-weight: 500; }
+.legal__body a { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+.legal__body a:hover { text-decoration-color: currentColor; }
+.legal__nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.legal__nav a { font-size: 14px; line-height: 22px; color: var(--ink-muted); text-decoration: none; }
+.legal__nav a:hover { color: var(--ink); }
+@media (max-width: 860px) {
+  .legal__side { grid-column: 1 / -1; position: static; }
+  .legal__body { grid-column: 1 / -1; }
+  .legal__nav { display: none; }
+}
 .closing .quote { max-width: 22em; }
 
 /* Services strip (from the brand board) */

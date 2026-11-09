@@ -23,6 +23,7 @@ package.json     pins Wrangler, the Cloudflare CLI
 | `/packages` | `packages.html` | Signature spa rituals and gift cards |
 | `/visit` | `visit.html` | Address, hours, contact form |
 | `/book` | `book.html` | Booking, framed in the site's header and footer, ready for the Square embed |
+| `/privacy` | `privacy.html` | Privacy policy, linked from the footer's bottom bar |
 
 Cloudflare serves `visit.html` at `/visit` and redirects `/visit.html` there, so links in the
 pages use the short form (`/visit`).
@@ -88,7 +89,6 @@ One-time setup in the Cloudflare dashboard:
 - [ ] Replace every `.tbc` placeholder (search the code for `class="tbc`).
 - [ ] Swap brand textures for photography (see below).
 - [ ] Connect online booking and gift vouchers (see below). The forms are connected.
-- [ ] Point the social links at the confirmed handles.
 - [ ] Submit `https://serenive.com.au/sitemap.xml` in Google Search Console.
 
 ## Photography
@@ -119,6 +119,22 @@ committing them.
   put the Square booking URL in `data-square-url` on `#booking-continue`. In Square, set the button
   colour to Forest `#2F4A3B` and upload `serenive-monogram` as the logo.
 - **Gift vouchers:** point the "Buy a gift voucher" button in `public/packages.html` at Square eGift Cards.
+
+## Privacy policy and legal details
+
+`/privacy` (`public/privacy.html`) is written in plain language for the Australian Privacy
+Principles and the Spam Act, and names the services that touch client data: Square (bookings,
+payments, gift cards), Google Workspace (email), Cloudflare (hosting, forms, analytics) and Me².
+When it changes, update the "Last updated" line in the page's side column.
+
+- Operator: Rebecca Handyside, sole trader, ABN 61 463 662 718 (active from 20 Oct 2026, not GST
+  registered at the time of writing). The ABR showed no business name linked to the ABN; trading as
+  "Serenive Beauty & Spa" normally needs the name registered with ASIC. Worth confirming with the owners.
+- Social: Instagram https://www.instagram.com/serenive.au/ and Facebook
+  https://www.facebook.com/Serenive.au/, linked from every footer and listed as `sameAs` in the
+  home page's `DaySpa` data. There is no TikTok account, so no TikTok link.
+- A booking and cancellation policy is not on the site yet; it needs the owners' terms (notice
+  period, deposit and no-show rules) once Square is set up.
 
 ## Search, analytics and small comforts
 
@@ -174,8 +190,7 @@ page's structured data.
 
 ## Content needed from Serenive
 
-- Online booking link (Acuity or Square) and the e-gift card link.
-- Social handles.
+- Square booking link and the Square eGift card link (Square chosen; account being verified).
 - Professional photography of the space, team and treatments to replace the stock images.
 
 ## House rules (Me²)
