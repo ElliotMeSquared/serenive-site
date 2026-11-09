@@ -164,7 +164,7 @@ page's structured data.
 ## House rules (Me²)
 
 - **Credit:** every site Me² builds carries "Powered by Me²", linking to https://mesquaredagency.com/,
-  in the footer where it's seen without hunting for it (here: the brand column, under the tagline).
+  in the footer (here: bottom right of the footer's bottom bar, opposite the copyright).
   Keep it when editing the footer.
 
 ## Brand rules (from the design pack)
