@@ -502,6 +502,12 @@ textarea.field { padding: 14px 16px; min-height: 140px; resize: vertical; }
 .manifesto__body .first { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.4; margin-bottom: var(--space-5); }
 .manifesto__body p { font-size: 17px; line-height: 30px; }
 @media (max-width: 860px) { .manifesto__side, .manifesto__body { grid-column: 1 / -1; } }
+/* Founder portrait beside the story on the Philosophy page */
+.founder { margin: 0; }
+.founder .media { aspect-ratio: 2 / 3; }
+.founder figcaption { margin-top: var(--space-3); font-size: 13px; line-height: 20px; letter-spacing: .04em; color: var(--ink-muted); }
+.founder figcaption b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 20px; line-height: 28px; letter-spacing: 0; color: var(--ink); }
+@media (max-width: 860px) { .founder { max-width: 300px; } }
 .closing .quote { max-width: 22em; }
 
 /* Services strip (from the brand board) */
