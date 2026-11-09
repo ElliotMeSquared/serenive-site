@@ -25,3 +25,5 @@ real space, team and treatments before or soon after launch.
 | sauna | photo-1583416750470-965b2707b355 |
 
 Each photo's source is `https://images.unsplash.com/<photo id>`.
+
+`bec-portrait` is Serenive's own: the founder portrait supplied by the owners (November 2026), exported to WebP at 1025 and 700 wide.
